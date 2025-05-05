@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Marine Life - Beneath the Waves</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --dark-blue: #00223E;
+      --deep-black: #000;
+      --accent: #0a1a2f;
+      --text-light: #ccc;
+      --text-muted: #aaa;
+      --aqua: #00cfd5;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(to bottom, var(--dark-blue), var(--deep-black));
+      color: #fff;
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow-x: hidden;
+    }
+
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0.6);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+
+    nav a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 500;
+      font-size: 1rem;
+      position: relative;
+      transition: color 0.3s ease;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 2px;
+      left: 0;
+      bottom: -4px;
+      background-color: #87cefa;
+      transition: width 0.3s ease;
+    }
+
+    nav a:hover {
+      color: #87cefa;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    header {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      background-image: url('images/aquarium-725798.jpg');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 60px 40px;
+      overflow: hidden;
+    }
+
+    .wave {
+      position: absolute;
+      bottom: 0;
+      width: 100%;
+      height: 120px;
+      background: url('https://svgshare.com/i/uYi.svg');
+      background-size: cover;
+      animation: waveMove 10s infinite linear;
+    }
+
+    @keyframes waveMove {
+      0% { background-position-x: 0; }
+      100% { background-position-x: 1000px; }
+    }
+
+    .header-text {
+      max-width: 40%;
+      animation: fadeIn 1.5s ease forwards;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .header-text h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3.5rem;
+      margin-bottom: 10px;
+      color: #aee0ff;
+    }
+
+    .header-text p {
+      font-size: 1.2rem;
+      color: var(--text-light);
+      margin-bottom: 20px;
+    }
+
+    .card-container {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      margin-top: 250px;
+      animation: fadeIn 2s ease forwards;
+    }
+
+    .card {
+      background-color: rgba(0, 0, 0, 0.6);
+      border-radius: 18px;
+      overflow: hidden;
+      width: 270px;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+      transition: transform 0.4s ease, box-shadow 0.4s ease;
+      text-decoration: none;
+      color: inherit;
+      border: 1px solid #00cfd520;
+    }
+
+    .card:hover {
+      transform: translateY(-10px) scale(1.02);
+      box-shadow: 0 12px 20px rgba(0, 200, 255, 0.3);
+    }
+
+    .card img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 18px;
+      text-align: center;
+    }
+
+    .card-content h3 {
+      margin-bottom: 10px;
+      font-size: 1.4rem;
+      font-weight: 700;
+      color: #aee0ff;
+    }
+
+    .card-content p {
+      font-size: 1rem;
+      color: var(--text-light);
+    }
+
+    footer {
+      background-color: #010f1c;
+      padding: 40px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #777;
+      margin-top: auto;
+    }
+
+    @media (max-width: 1024px) {
+      .header-text {
+        max-width: 50%;
+      }
+
+      .card-container {
+        justify-content: center;
+        margin-top: 200px;
+      }
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 40px 20px;
+      }
+
+      .header-text {
+        max-width: 100%;
+        margin-bottom: 30px;
+      }
+
+      .card-container {
+        justify-content: center;
+      }
+
+      .card {
+        width: 85%;
+      }
+
+      nav {
+        flex-wrap: wrap;
+        gap: 20px;
+        padding: 15px;
+      }
+
+      nav a {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <a href="index.html" id="home-link">Home</a>
+    <a href="about_ocean.html" id="about-link" class="protected-link">About</a>
+    <a href="marine_life.html" id="marine-life" class="protected-link">Marine Life</a>
+    <a href="ecosystem.html" id="ecosystem" class="protected-link">Ecosystem</a>
+    <a href="discover.html" id="discover-link" class="protected-link">Discover</a>
+    <a href="gallery.html" id="gallery-link" class="protected-link">Gallery</a>
+  </nav>
+
+  <header>
+    <div class="header-text">
+      <h1>Marine Life</h1>
+      <p>Dive into the amazing diversity of ocean creatures.</p>
+    </div>
+    <div class="card-container">
+      <a href="fish.html" class="card">
+        <img src="images\pufferfish-8464398_1280.jpg" alt="Fish">
+        <div class="card-content">
+          <h3>Fish</h3>
+          <p>Swim through the colorful world of ocean fish species.</p>
+        </div>
+      </a>
+      <a href="mammals.html" class="card">
+        <img src="images\stingray-3399112.jpg" alt="Mammals">
+        <div class="card-content">
+          <h3>Mammals</h3>
+          <p>Meet whales, dolphins, seals, and more fascinating mammals.</p>
+        </div>
+      </a>
+      <a href="invertebrates.html" class="card">
+        <img src="images\octopus-8562474.jpg" alt="Invertebrates">
+        <div class="card-content">
+          <h3>Invertebrates</h3>
+          <p>Explore jellyfish, squid, crabs, and other spineless wonders.</p>
+        </div>
+      </a>
+      <a href="rare_creatures.html" class="card">
+        <img src="images\27444fc3c5922826dfa6da63445ea386.jpg" alt="Rare Creatures">
+        <div class="card-content">
+          <h3>Rare Creatures</h3>
+          <p>Discover deep-sea species you've never seen before.</p>
+        </div>
+      </a>
+    </div>
+    <div class="wave"></div>
+  </header>
+
+  <footer>
+    &copy; 2025 First Fathom | Home | Animals | Habitats | Help
+  </footer>
+
+</body>
+</html>

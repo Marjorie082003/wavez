@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marine Ichthyology | Beneath the Waves</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --deep-ocean: #00182b;
+      --abyss-blue: #00223E;
+      --midnight: #000b15;
+      --bioluminescent: #0c1652;
+      --coral: #ff7f50;
+      --highlight: #87cefa;
+      --text-light: #e0f7fa;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Inter', sans-serif;
+      background: linear-gradient(180deg, var(--deep-ocean) 0%, var(--midnight) 100%);
+      color: var(--text-light);
+      line-height: 1.8;
+      min-height: 100vh;
+    }
+
+    /* Professional Navigation */
+    nav {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      padding: 20px;
+      background: rgba(0, 20, 40, 0.85);
+      backdrop-filter: blur(12px);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      border-bottom: 1px solid rgba(0, 247, 255, 0.15);
+    }
+
+    nav a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      letter-spacing: 0.5px;
+      font-size: 1.05rem;
+      position: relative;
+      transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    }
+
+    nav a::after {
+      content: '';
+      position: absolute;
+      width: 0;
+      height: 2px;
+      bottom: -5px;
+      left: 0;
+      background: linear-gradient(90deg, var(--bioluminescent), var(--highlight));
+      transition: width 0.4s ease;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a.active {
+      color: var(--bioluminescent);
+      font-weight: 600;
+    }
+
+    /* Elegant Header */
+    .science-header {
+      position: relative;
+      height: 80vh;
+      overflow: hidden;
+    }
+
+    .header-bg {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      filter: brightness(0.7);
+    }
+
+    .header-content {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      width: 90%;
+      max-width: 900px;
+      z-index: 2;
+    }
+
+    .header-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.8rem, 5vw, 4.5rem);
+      margin-bottom: 20px;
+      background: linear-gradient(135deg, var(--bioluminescent), var(--highlight));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+      line-height: 1.2;
+    }
+
+    .header-content p {
+      font-size: clamp(1.1rem, 2vw, 1.3rem);
+      max-width: 700px;
+      margin: 0 auto 30px;
+      font-weight: 300;
+    }
+
+    /* Scientific Content Sections */
+    .research-section {
+      padding: 100px 20px;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(2.2rem, 4vw, 3rem);
+      margin-bottom: 50px;
+      text-align: center;
+      position: relative;
+      color: var(--bioluminescent);
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      width: 80px;
+      height: 3px;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(90deg, var(--highlight), transparent);
+    }
+
+    /* Taxonomy Cards */
+    .taxonomy-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+      gap: 40px;
+      margin: 60px 0;
+    }
+
+    .taxonomy-card {
+      background: rgba(0, 40, 80, 0.3);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+      transition: transform 0.4s, box-shadow 0.4s;
+      border: 1px solid rgba(0, 200, 255, 0.1);
+      backdrop-filter: blur(8px);
+    }
+
+    .taxonomy-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 25px 50px rgba(0, 150, 255, 0.15);
+    }
+
+    .card-image {
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+      border-bottom: 1px solid rgba(0, 200, 255, 0.2);
+    }
+
+    .card-content {
+      padding: 30px;
+    }
+
+    .card-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      color: var(--highlight);
+    }
+
+    .card-subtitle {
+      font-size: 0.9rem;
+      color: var(--bioluminescent);
+      margin-bottom: 20px;
+      font-style: italic;
+    }
+
+    .card-text {
+      margin-bottom: 25px;
+      font-weight: 300;
+    }
+
+    /* Research Highlight */
+    .research-highlight {
+      background: linear-gradient(135deg, rgba(0, 30, 60, 0.6), rgba(0, 60, 120, 0.3));
+      border-radius: 12px;
+      padding: 50px;
+      margin: 80px 0;
+      border-left: 4px solid var(--bioluminescent);
+    }
+
+    .highlight-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      margin-bottom: 20px;
+      color: var(--highlight);
+    }
+
+    /* Footer */
+    footer {
+      background: linear-gradient(180deg, var(--midnight), #000);
+      padding: 80px 20px 40px;
+      text-align: center;
+      border-top: 1px solid rgba(0, 200, 255, 0.1);
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 40px;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+    }
+
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+
+    .footer-links a:hover {
+      color: var(--highlight);
+    }
+
+    .copyright {
+      font-size: 0.9rem;
+      color: var(--text-light);
+      opacity: 0.7;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      nav {
+        gap: 25px;
+        padding: 15px;
+      }
+      
+      .research-section {
+        padding: 60px 20px;
+      }
+      
+      .taxonomy-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .research-highlight {
+        padding: 30px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Scientific Navigation -->
+  <nav>
+    <a href="index.html"  class="active">Home</a>
+    <a href="about_ocean.html" class="protected-link">About</a>
+    <a href="marine_life.html"  class="protected-link">Marine Life</a>
+    <a href="ecosystem.html"  class="protected-link">Ecosystem</a>
+    <a href="discover.html"  class="protected-link">Discover</a>
+    <a href="gallery.html"  class="protected-link">Gallery</a>
+  </nav>
+
+  <header class="science-header">
+    <img src="images\d706de6baba9afea6ec0a335a1294df0.jpg"
+         alt="School of yellow tang fish in clear blue water" 
+         class="header-bg">
+    <div class="header-content">
+      <h1>Marine Ichthyology</h1>
+      <p>Exploring the evolutionary adaptations and ecological roles of over 34,000 fish species inhabiting Earth's aquatic ecosystems</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- Taxonomy Section -->
+    <section class="research-section">
+      <h2 class="section-title">Types of Marine Mammals</h2>
+      
+      <div class="taxonomy-grid">
+        <!-- Bony Fish -->
+        <article class="taxonomy-card">
+          <img src="images\whale-1302757.jpg" 
+               alt="Colorful coral reef fish" 
+               class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">Whales</h3>
+            <p class="card-text">
+              The largest animals on the planet, whales can be found in oceans worldwide. They include the gentle giants like the blue whale and the mighty orca, known for their intelligence and social behavior. </p>
+            <div class="card-stats">
+              <p><strong>Key Features:</strong> Blowhole for breathing, blubber for warmth, long migrations</p>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Cartilaginous Fish -->
+        <article class="taxonomy-card">
+          <img src="images\dolphin-8979787.jpg" 
+               alt="Great white shark underwater" 
+               class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">Dolphins</h3>
+           
+            <p class="card-text">
+              Known for their playful behavior and high intelligence, dolphins are highly social animals that live in groups called pods. They communicate with each other using clicks, whistles, and body movements. </p>
+            <div class="card-stats">
+              <p><strong>Key Features:</strong> Echolocation for communication, streamlined bodies, dorsal fins</p>
+            </div>
+          </div>
+        </article>
+        
+        <!-- Jawless Fish -->
+        <article class="taxonomy-card">
+          <img src="images\animal-4148904.jpg" 
+               alt="Hagfish specimen" 
+               class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">Seals and Sea Lions</h3>
+            
+            <p class="card-text">
+              Often seen lounging on beaches or swimming gracefully in the water. While they share many similarities, seals are generally more solitary, while sea lions are more social and known for their barking calls.
+            </p>
+            <div class="card-stats">
+              <p><strong>Key Features:</strong> External ear flaps (sea lions), flippers for swimming, solitary (seals)</p>
+            </div>
+          </div>
+        </article>
+      </div>
+    </section>
+    
+    <!-- Research Highlight -->
+    <section class="research-section">
+      <div class="research-highlight">
+        <h3 class="highlight-title">Recent Discovery: Hadal Zone Adaptations</h3>
+        <p>
+          The Mariana snailfish (Pseudoliparis swirei), discovered at depths of 8,000m in the Mariana Trench, demonstrates extraordinary pressure adaptation. Its genome reveals modifications in osmoregulation and protein structure that prevent cellular collapse under 1,000+ atmospheres of pressure. Unlike shallow-water fish, it lacks a swim bladder and instead maintains buoyancy through lipid-rich tissues.
+        </p>
+      </div>
+      
+      <h2 class="section-title">Ecological Roles</h2>
+      <div class="taxonomy-grid">
+        <article class="taxonomy-card">
+          <img src="https://images.unsplash.com/photo-1524704654690-b56c05c78a00?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2069&q=80" 
+               alt="Coral reef ecosystem" 
+               class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">Keystone Species</h3>
+            <p>
+              Parrotfish maintain coral reef health by controlling algal growth through grazing. A single bumphead parrotfish can consume 5 tons of coral skeleton annually, producing white sand beaches through bioerosion.
+            </p>
+          </div>
+        </article>
+        
+        <article class="taxonomy-card">
+          <img src="https://images.unsplash.com/photo-1552084117-56a4a1a5e0e8?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80" 
+               alt="Salmon migration" 
+               class="card-image">
+          <div class="card-content">
+            <h3 class="card-title">Nutrient Cycling</h3>
+            <p>
+              Anadromous salmon transport marine-derived nutrients to freshwater ecosystems. After spawning, their carcasses provide nitrogen and phosphorus that enhance riparian vegetation growth by up to 300%.
+            </p>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-links">
+      <a href="index.html">Home</a>
+      <a href="about_ocean.html">Ocean Science</a>
+      <a href="research.html">Publications</a>
+      <a href="contact.html">Contact Researchers</a>
+      <a href="resources.html">Educational Resources</a>
+    </div>
+    <p class="copyright">
+      &copy; 2025 Marine Biological Research Institute. All rights reserved.
+    </p>
+  </footer>
+
+</body>
+</html>

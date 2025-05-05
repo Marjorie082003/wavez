@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About the Ocean | Beneath the Waves</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500&family=Open+Sans&display=swap" rel="stylesheet">
+
+  <style>
+    body, html {
+      margin: 0;
+      padding: 0;
+      font-family: 'Open Sans', sans-serif;
+    }
+
+    .about-ocean {
+      background: url('https://images.unsplash.com/photo-1507525428034-b723cf961d3e') no-repeat center center/cover;
+      color: white;
+      position: relative;
+      padding: 80px 0;
+    }
+
+    .overlay {
+      background-color: rgba(0, 37, 64, 0.7); /* deep ocean blue with transparency */
+      padding: 60px 20px;
+    }
+
+    .content-container {
+      max-width: 1000px;
+      margin: auto;
+      text-align: center;
+      animation: fadeIn 1.5s ease-in-out;
+    }
+
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 3em;
+      margin-bottom: 20px;
+      color: #00d4ff;
+    }
+
+    .intro {
+      font-size: 1.2em;
+      line-height: 1.8;
+      margin-bottom: 40px;
+      color: #e0f7ff;
+    }
+
+    .facts, .biodiversity {
+      text-align: left;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 20px 30px;
+      margin: 20px auto;
+      border-left: 4px solid #00d4ff;
+      border-radius: 10px;
+    }
+
+    .facts h2, .biodiversity h2 {
+      font-size: 1.8em;
+      margin-bottom: 15px;
+      color: #7fe9ff;
+    }
+
+    .facts ul {
+      list-style: none;
+      padding: 0;
+    }
+
+    .facts li {
+      font-size: 1.1em;
+      margin: 8px 0;
+      color: #d0f8ff;
+    }
+
+    .biodiversity p {
+      font-size: 1.1em;
+      color: #d0f8ff;
+      line-height: 1.6;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Responsive design */
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2em;
+      }
+
+      .facts, .biodiversity {
+        padding: 15px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <section class="about-ocean">
+    <div class="overlay">
+      <div class="content-container">
+        <h1>About the Ocean</h1>
+        <p class="intro">
+          The ocean is a vast, mysterious realm that covers over 70% of our planet's surface.
+          It holds 97% of Earth's water and remains largely unexplored. Beneath its shimmering surface
+          lies a world teeming with life, movement, and wonder—making it one of the most important
+          and awe-inspiring natural resources on Earth.
+        </p>
+
+        <div class="facts">
+          <h2>🌐 Key Facts</h2>
+          <ul>
+            <li><strong>Covers:</strong> Over 361 million square kilometers</li>
+            <li><strong>Average Depth:</strong> About 3,800 meters</li>
+            <li><strong>Deepest Point:</strong> Mariana Trench (~11,000 meters)</li>
+            <li><strong>Oxygen Provider:</strong> Generates over 50% of Earth's oxygen</li>
+            <li><strong>Carbon Absorber:</strong> Absorbs 30% of human-made CO₂</li>
+          </ul>
+        </div>
+
+        <div class="biodiversity">
+          <h2>🐠 Biodiversity</h2>
+          <p>
+            The ocean is home to more than <strong>230,000 known marine species</strong>,
+            with millions more yet to be discovered. From tiny plankton to giant blue whales,
+            its ecosystems are diverse and vital to life on Earth.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</body>
+</html>
